@@ -1,4 +1,6 @@
 ﻿using Xunit;
+using MonGraphQLClient;
+using Microsoft.Extensions.Logging;
 
 namespace MonGraphQLClientTests;
 
@@ -6,9 +8,12 @@ namespace MonGraphQLClientTests;
 public class MonBoardTests
 {
 	BaseFixture fixture;
+	ILogger logger;
+
 	public MonBoardTests(BaseFixture fixture)
 	{
-		this.fixture = fixture;
+		this.fixture = fixture;	
+		this.logger = fixture.LoggerFactory.CreateLogger<MonBoardTests>();
 	}
 
 	[Fact]
@@ -16,18 +21,19 @@ public class MonBoardTests
 	{
 		await Task.Delay(10);
 
-		string boardid = fixture.BoardID;
+		Assert.False(string.IsNullOrEmpty(fixture.BoardID));
 
-		string apiKey = fixture.APIKey;
+		Assert.False(string.IsNullOrEmpty(fixture.APIKey));
 
-		string apiUrl = fixture.APIUrl;
-
-		Assert.False(string.IsNullOrEmpty(boardid));
-
-		Assert.False(string.IsNullOrEmpty(apiKey));
-
-		Assert.False(string.IsNullOrEmpty(apiUrl));
+		Assert.False(string.IsNullOrEmpty(fixture.APIUrl));
 	}
 
+	[Fact]
+	public async Task GetMasterBoardByBorardIdTest()
+	{
+		List<MonGroup> groupsForBoard =  await Agent.QueryBoardGroups(fixture.BoardID, logger);
+
+		Assert.True(groupsForBoard.Any());
+	}
 }
 
