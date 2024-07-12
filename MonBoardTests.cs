@@ -12,9 +12,9 @@ public class MonBoardTests
 	}
 
 	[Fact]
-	public async Task Test1()
+	public async Task BasicSettingsTest()
 	{
-		await Task.Delay(100);
+		await Task.Delay(10);
 
 		string boardid = fixture.BoardID;
 
