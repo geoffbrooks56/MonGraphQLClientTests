@@ -2,7 +2,7 @@
 
 namespace MonGraphQLClientTests
 {
-	[CollectionDefinition("MonGraphQLClientTests collection")]
+	[CollectionDefinition("MonGraphQLClientTests collection", DisableParallelization = true)]
 	public class KingdomCollection : ICollectionFixture<BaseFixture>
 	{
 		// This class has no code, and is never created. Its purpose is simply

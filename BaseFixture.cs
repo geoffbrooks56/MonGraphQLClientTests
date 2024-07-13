@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace MonGraphQLClientTests;
+
 public class BaseFixture : IDisposable
 {
 	public string BoardID;
@@ -35,5 +36,8 @@ public class BaseFixture : IDisposable
 	{
 		GC.SuppressFinalize(this);
 	}
-		
-}
+
+	
+	}
+
+
