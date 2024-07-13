@@ -36,8 +36,6 @@ public class BaseFixture : IDisposable
 	{
 		GC.SuppressFinalize(this);
 	}
-
-	
-	}
+}
 
 
